@@ -1,0 +1,32 @@
+http://localhost:8080/users
+
+{
+	"nomUser" : "hamza",
+	"preUser" : "nait",
+	"emailUser" : "ssss",
+	"teleUser" : "dwdwd",
+	"activation" : true,
+	"projets" : null ,
+	"problems" : null ,
+	"donnations" : null ,
+	"commantaires" : null
+}
+
+========================================
+
+http://localhost:8080/projects
+
+{
+	"titre" : "pr1",
+	"description" : "nait",
+	"montantMini" : 123,
+	"montantActuel" : 0,
+	"categorie" : "sss",
+	"etat" : true,
+	"duree" :123,
+	"dateCre" : null,
+	"user" : {"idUser": 1} ,
+	"problems" : null ,
+	"donnations" : null ,
+	"commantaires" : null 
+}

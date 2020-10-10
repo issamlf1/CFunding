@@ -1,0 +1,198 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg white ie-nav navbar-light  fixed-top" [containerInside]="false">
+  <mdb-navbar-brand>
+    <a class="logo navbar-brand" routerLink="acceuil"><span class="kySGVB"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12.81" width="20" height="20"><defs><style>.cls-1{font-size:11.79px;font-family:MyriadPro-Regular, Myriad Pro;}.cls-2{fill:#fff;}.cls-3{fill:#f41200;}.cls-4{fill:#00baff;}</style></defs><title>Asset 3</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><text class="cls-1" transform="translate(0 9.87) scale(1.76 1)">C</text><circle class="cls-2" cx="8" cy="7.81" r="0.5"/><path class="cls-3" d="M8,6.81a1,1,0,1,0,1,1,1,1,0,0,0-1-1Z"/><circle class="cls-2" cx="8" cy="3.81" r="0.5"/><path class="cls-4" d="M8,2.81a1,1,0,1,0,1,1,1,1,0,0,0-1-1Z"/></g></g></svg>Funding</span></a>
+  </mdb-navbar-brand>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+        <a class="nav-link"  routerLink="create" ><span class="kySGVB"><i class="fas fa-plus"> Lancer Mon Projet</i></span></a>
+      </li>
+      <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+        <a class="nav-link" routerLink="search"><span class="kySGVB"><i class="fas fa-search" > Chercher un Projet</i></span></a>
+      </li>
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+        <li  class="nav-item">
+          <a class="nav-link"  *ngIf="!user" routerLink="signin" >
+            <span  class="kySGVB">SE CONNECTER</span>
+          </a>
+        </li>
+      <li class="nav-item"  *ngIf="user">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <span class="k-ButtonWithBadge" mdbDropdownToggle>
+              <span class="k-ButtonImage" style="float: left">
+
+              </span>
+                <span class="" style="font-weight: bold;" ><i class="fas fa-user"></i>&nbsp;{{user.nomUser}}-{{user.preUser}}</span>
+            </span>
+
+            <!--ngif pour un utilisateur sans photo-->
+             <!-- <mdb-icon  fas icon="user" mdbDropdownToggle></mdb-icon>-->
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+              <a class="dropdown-item" routerLink="profil">Mon profil</a>
+              <a class="dropdown-item" routerLink="mesprojects">Mes projets</a>
+              <a class="dropdown-item" routerLink="mescontribution">Mes contribitions</a>
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" (click)="onDeconnexion()" >se deconnecter</a>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </links>
+</mdb-navbar>
+<br><br>
+<router-outlet></router-outlet>
+<!-- Footer -->
+<footer class="page-footer font-small rgba-black-light pt-4">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left textc">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: black">CFunDing</h5>
+        <p style="color: black">Donner à chacun le pouvoir d'agir pour un monde plus divers, plus durable, plus ouvert.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Partenariats et événementiel</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="textc">Devenons partenaires</a>
+          </li>
+          <li>
+            <a href="#!" class="textc" >Mentorat de projets</a>
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">À propos de Cfunding</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="textc">Nos valeurs</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">Nos statistiques</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">L’équipe</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">Presse</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Maison de Crowdfunding</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="textc">La Banque Postale</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">La boîte à outils</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">Le financement participatif</a>
+          </li>
+          <li>
+            <a href="#!" class="textc">Réussir sa collecte</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <hr>
+
+  <!-- Call to action -->
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Inscription gratuite</h5>
+    </li>
+    <li class="list-inline-item">
+      <a routerLink="signup" mdbBtn color="danger" rounded="true" mdbWavesEffect>Sign up!</a>
+    </li>
+  </ul>
+  <!-- Call to action -->
+
+  <hr>
+
+  <!-- Social buttons -->
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a mdbBtn floating="true" color="fb" class="mx-1" mdbWavesEffect>
+        <mdb-icon fab icon="facebook"></mdb-icon>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a mdbBtn floating="true" color="tw" class="mx-1" mdbWavesEffect>
+        <mdb-icon fab icon="twitter"></mdb-icon>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a mdbBtn floating="true" color="gplus" class="mx-1" mdbWavesEffect>
+        <mdb-icon fab fab icon="google-plus"></mdb-icon>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a mdbBtn floating="true" color="li" class="mx-1" mdbWavesEffect>
+        <mdb-icon fab icon="linkedin"></mdb-icon>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a mdbBtn floating="true" color="dribbble" class="mx-1" mdbWavesEffect>
+        <mdb-icon fab icon="dribbble"></mdb-icon>
+      </a>
+    </li>
+  </ul>
+
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/">Issam and Hamza</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

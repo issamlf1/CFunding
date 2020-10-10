@@ -1,0 +1,105 @@
+<form class="sc-ivVeuv kfnHvP" [formGroup]="firstFormGroup"  (ngSubmit)="onChecher()">
+  <label for="discover-searchbar" class="sc-fHSTwm jritKU">
+    <div size="24" class="sc-dnqmqq GkSeB"><svg fill-rule="evenodd" clip-rule="evenodd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" preserveAspectRatio="xMidYMid meet" id="icon-search" class="sc-htoDjs kEDdQQ">
+      <g>
+        <path d="M13.63 27.26C6.102 27.26 0 21.156 0 13.63 0 6.102 6.102 0 13.63 0c7.527 0 13.63 6.102 13.63 13.63 0 7.527-6.103 13.63-13.63 13.63zm0-3.556c5.563 0 10.074-4.51 10.074-10.074S19.194 3.556 13.63 3.556 3.556 8.066 3.556 13.63c0 5.563 4.51 10.074 10.074 10.074zm17.85 5.261a1.778 1.778 0 01-2.515 2.514l-8.217-8.217a1.778 1.778 0 112.514-2.514l8.217 8.217z" fill-rule="nonzero">
+
+        </path></g></svg></div></label><div class="sc-cCbXAZ dIBamG" style="font-size: 28px; display: inline-block;">
+  <input id="discover-searchbar" placeholder="Rechercher" value="" style="box-sizing: content-box; width: 148px;" formControlName="chercher">
+  <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 28px; font-family: sofia-pro, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;color: white">
+  </div>
+  <div style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 28px; font-family: sofia-pro, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;color: white">Rechercher</div>
+</div>
+
+</form>
+<br>
+<div class="container">
+  <div class="row">
+   <div class="col-sm">
+     <form [formGroup]="secondFormGroup" class="example-form">
+       <mat-form-field class="example-full-width">
+         <input   type="text" placeholder="Categorie du projet" aria-label="Number" matInput  [matAutocomplete]="auto" formControlName="categorie"  required>
+         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+             {{option}}
+           </mat-option>
+         </mat-autocomplete>
+       </mat-form-field>
+     </form >
+   </div>
+    <div class="col-sm">
+      <form #f="ngForm">
+        <mat-radio-group aria-label="Select an option" >
+          <mat-radio-button value="false" name="etats" [(ngModel)]="etat"  color="primary"
+                           [checked]="etat === false" ngDefaultControl (change)="checkValue(etat?'A':'B')" >projets en cours</mat-radio-button>
+          <br>
+          <mat-radio-button value="true" name="etats" [(ngModel)]="etat"  color="primary"
+                            [checked]="etat === true"  (change)="checkValue(etat?'A':'B')"  ngDefaultControl>projets finis</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+    </div>
+
+
+  </div>
+<div class="row">
+
+</div>
+</div>
+<div class="container-fluid my-5 midlles" >
+  <div class="container">
+    <!--Section: Content-->
+    <section class="">
+
+      <!-- Section heading -->
+
+      <div class="row" >
+
+        <div class="col-md-3 mb-3"  *ngFor="let proj of listeproj ;let i=index">
+          <!--Card-->
+          <div class="card">
+
+            <!--Card image-->
+            <div class="view overlay">
+              <img *ngIf="proj.srcimage" [src]="proj.srcimage" class="card-img-top" alt="">
+              <a>
+                <div class="mask rgba-white-slight waves-effect waves-light"></div>
+              </a>
+            </div>
+            <!--/.Card image-->
+
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title"><strong>{{proj.titre}}</strong></h4>
+              <hr>
+              <!--Text-->
+              <p class="card-text mb-3">{{proj.description}}
+              </p>
+              <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+                {{proj.dateCre | date}}</p>
+              <p class="font-small grey-text mb-0">{{proj.categorie}}</p>
+              <p class="text-right mb-0 font-small font-weight-bold"><a (click)="getProjetId(proj.titre)">plus de details <i class="fas fa-angle-right"></i></a></p>
+            </div>
+            <!--/.Card content-->
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+    </section>
+    <!--Section: Content-->
+
+  </div>
+</div>

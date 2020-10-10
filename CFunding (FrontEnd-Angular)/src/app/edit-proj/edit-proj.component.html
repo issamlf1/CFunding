@@ -1,0 +1,127 @@
+<div class="highpro">
+    <div class="flex-fill"><span class="headpro">Modifier votre projet a tout instant!</span></div>
+ </div>
+
+
+ <mat-horizontal-stepper [linear]="isLinear" #stepper>
+   <mat-step [stepControl]="firstFormGroup">
+     <form [formGroup]="firstFormGroup" class="example-form">
+       <ng-template matStepLabel>description du projet</ng-template>
+       <mat-form-field>
+         <input matInput placeholder="titre de projet" [disabled] formControlName="titre" [(ngModel)]='projet.titre'  readonly >
+       </mat-form-field>
+       <br>
+       <mat-form-field  class="example-full-width" >
+         <mat-label >type du projet </mat-label>
+         <mat-select  [(value)]='projet.type' formControlName="type"   [(ngModel)]='projet.type'>
+           <mat-option value="dont" >dont</mat-option>
+           <mat-option value="reward-based" >reward-based crowdfunding</mat-option>
+           <mat-option value="equity" >L'equity crowdfunding</mat-option>
+           <mat-option value="prêt" >Le prêt</mat-option>
+         </mat-select >
+       </mat-form-field>
+       <br>
+       <mat-form-field class="example-full-width">
+         <input type="text" placeholder="Categorie du projet" aria-label="Number" [(ngModel)]='projet.categorie'   matInput  [matAutocomplete]="auto" formControlName="categorie"  >
+         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+             {{option}}
+           </mat-option>
+         </mat-autocomplete>
+       </mat-form-field>
+       <br>
+       <mat-form-field class="example-full-width">
+             <textarea matInput placeholder="Description" value="{{projet.description}}"  [(ngModel)]='projet.description' formControlName="description"
+                       cdkTextareaAutosize
+                       cdkAutosizeMinRows="5"
+                       cdkAutosizeMaxRows="5" ></textarea>
+       </mat-form-field>
+       <div>
+         <button mat-button matStepperNext>Next</button>
+       </div>
+     </form>
+   </mat-step>
+   <mat-step [stepControl]="secondFormGroup">
+     <form [formGroup]="secondFormGroup">
+       <ng-template matStepLabel>montant et duree</ng-template>
+       <mat-form-field>
+         <input matInput placeholder="Montant"   value="{{projet.montant}}"  [(ngModel)]='projet.montant' type="number" formControlName="montant" >
+         <span matPrefix>DH&nbsp;</span>
+       </mat-form-field>
+       <br>
+       <mat-form-field>
+         <input matInput placeholder="Durée (60 jours maximum)"  value="{{projet.duree}}"  [(ngModel)]='projet.duree' type="number" formControlName="duree" >
+         <span matSuffix>Jours</span>
+       </mat-form-field>
+       <br>
+
+
+       <div class="input-group">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+         </div>
+         <div class="custom-file">
+           <input type="file" class="custom-file-input" id="inputGroupFile01" accept="image/*" (change)="onSelectFile($event)"
+                  aria-describedby="inputGroupFileAddon01">
+           <label class="custom-file-label" for="inputGroupFile01" style="width: 30%">{{userfile.name}}</label>
+         </div>
+       </div>
+
+
+       <br>
+       <div class="speciale">
+
+         <img [src]="srcimg"class="img-fluid" alt="Upload your Image" style="width: 100%;height: 100%">
+
+
+       </div>
+
+       <div>
+         <button mat-button matStepperPrevious>Back</button>
+         <button mat-button matStepperNext>Next</button>
+       </div>
+     </form>
+   </mat-step >
+   <mat-step [stepControl]="thirdFormGroup">
+     <ng-template matStepLabel>Contreparties</ng-template>
+     <div class="card w-50">
+       <div class="card-header text-center">
+         <span  style="font-weight: bold"> pour {{thirdFormGroup.value.montant}} DH&nbsp;</span>
+
+       </div>
+       <div class="card-body ">
+         <form class="example-form" [formGroup]="thirdFormGroup">
+           <mat-form-field class="example-full-width">
+             <input matInput placeholder="le titre" value="{{ mescontri?.titre }}" [(ngModel)]=' mescontri.titre' formControlName="titre" >
+           </mat-form-field>
+           <br>
+           <mat-form-field class="example-full-width">
+             <textarea matInput placeholder="Description" formControlName="description"
+                       cdkTextareaAutosize
+                       cdkAutosizeMinRows="5"
+                       cdkAutosizeMaxRows="5"  value="{{ mescontri?.description }}" [(ngModel)]='mescontri.description'></textarea>
+
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Montant" value="{{ mescontri?.montant }}" [(ngModel)]='mescontri.montant' type="number" formControlName="montant"  disabled="disabled">
+             <span matPrefix>DH&nbsp;</span>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput [matDatepicker]="picker1"   value="{{ mescontri?.livraison }}"  [(ngModel)]='mescontri.livraison'  placeholder="Livraison" formControlName="livraison">
+             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+             <mat-datepicker #picker1></mat-datepicker>
+           </mat-form-field>
+         </form>
+       </div>
+     </div>
+
+     <br>
+     <div>
+       <button mat-button matStepperPrevious>Back</button>
+       <button mat-button (click)="stepper.reset()">Reset</button>
+       <button mat-button   (click)="commit()">Confirmer</button>
+     </div>
+   </mat-step>
+ </mat-horizontal-stepper>

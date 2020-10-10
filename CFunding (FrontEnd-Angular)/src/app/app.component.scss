@@ -1,0 +1,116 @@
+.colorNav{
+  background-color: #ffffff;
+}
+
+.colorItem{
+  color: black;
+}
+li{
+  color: black;
+}
+
+
+.imgbk{
+  border: 2px solid #18A5D6;
+}
+a:hover {
+  color: blue;
+
+}
+a:active{
+  background-color: #757575;
+}
+.navbar{
+  background-color: azure;
+}
+.navbar-dark{
+  background-color: azure;
+}
+.pink{
+  background-color: azure;
+}
+.ie-nav{
+  background-color: azure;
+}
+.kySGVB {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+
+.navbar-dark {
+  color: black;
+}
+.textc{
+  color: black;
+}
+.headde{
+  background-color: #18a5d6;
+  background-repeat: no-repeat;
+  width: 100%;
+  height:64px;
+  opacity: 1;
+  position: fixed;
+
+
+}
+
+#hedmy{
+  text-align:center;
+}
+.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
+  background-color: rgba(24, 165, 214, 0.29);
+}
+
+.midlles{
+  width: 100%;
+  background-color: #f6f1eb;
+  margin-bottom: 10px;
+  margin-top: 9px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+}
+.k-ButtonImage {
+  width: 2.5rem;
+  height: auto;
+  border-radius: 1.25rem;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  opacity: 1;
+  transition: opacity .2s;
+}
+.k-ButtonWithBadge {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.k-ButtonImage__img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+.ceconnceter{
+  margin-top: auto;
+  padding: auto;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+
+}
+.nav-item.nav-link.ceconnceter{
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  text-align: center;
+}

@@ -1,0 +1,75 @@
+<br><br><br>
+<h1 style="text-align: center;font-weight: bold">{{projet.titre}}</h1>
+<h3 style="text-align: center;color: gray">{{projet.categorie}}</h3>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <img  [src]="projet.srcimage" class="rounded mx-auto d-block" style="height: 150px;height: 200px" >
+    </div>
+    <div class="col-sm">
+      <div class="row">
+        <div class="col-sm">
+          {{ nbrContr }} Contributeurs
+        </div>
+        <div class="col-sm">
+         {{ projet.jourRestant }} jours Restants
+        </div>
+        <div class="col-sm">
+          {{projet.montantActuel}} DH Sur {{projet.montant}} DH
+        </div>
+      </div>
+      <br>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" [style.width]="pourcentage+'%'" [ngClass]="{'aria-valuenow':pourcentage,'aria-valuemin': '0', 'aria-valuemax': '100'}" >{{pourcentage}}%</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="row" *ngIf="!projet.etat">
+    <div class="col-sm">
+      <div class="card">
+        <h5 class="card-header" style="text-align: center;font-weight: bold">faire un don</h5>
+        <div class="card-body">
+          <label for="montant">Montant :</label>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">DH</span>
+            </div>
+
+            <input type="text" id="montant"  class="form-control" aria-label="Amount (to the nearest dollar)" [(ngModel)]=Montant>
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+
+          <a class="btn btn-primary" (click)="effectuerDon()">je soutiens</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <h5 class="card-header" style="text-align: center;font-weight: bold">pour {{mescontri.montant}} DH</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{mescontri.titre}}</h5>
+          <p class="card-text">{{mescontri.description}}</p>
+          <small style="display: block">{{mescontri.livraison| date}}</small>
+          <br>
+          <a class="btn btn-primary" (click)="effectuerContr()">je soutiens</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

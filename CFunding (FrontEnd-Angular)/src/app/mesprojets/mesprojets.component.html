@@ -1,0 +1,65 @@
+<div class="container-fluid my-5 midlles" >
+          <div class="container">
+            <!--Section: Content-->
+            <section class="">
+
+              <!-- Section heading -->
+
+              <div class="row" >
+
+                <div class="col-md-3 mb-3"  *ngFor="let proj of listProjets ;let i=index">
+                  <!--Card-->
+                  <div class="card">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                      <img [src]="proj.srcimage" class="card-img-top" alt="">
+                      <a>
+                        <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                      </a>
+                    </div>
+                    <!--/.Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body">
+                      <!--Title-->
+                      <h4 class="card-title"><strong>{{proj.titre}}</strong></h4>
+                      <hr>
+                      <!--Text-->
+                      <p class="card-text mb-3">{{proj.description}}
+                      </p>
+                      <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+                        {{proj.dateCre | date}}</p>
+                      <p class="font-small grey-text mb-0">{{proj.categorie}}</p>
+                      <a type="button" mdbBtn floating="true" size="sm" color="tw" class="waves-light"(click)="update(proj.titre)"  mdbWavesEffect>
+                        <i class="fas fa-edit"></i>
+                        Modifier
+                      </a>
+                      <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" (click)="delete(proj)" mdbWavesEffect>
+                        <i class="fas fa-trash-alt"></i>
+                        Supprimer
+                      </a>
+                    </div>
+                    <!--/.Card content-->
+
+                  </div>
+                  <!--/.Card-->
+
+                </div>
+
+
+
+
+
+              </div>
+
+
+
+            </section>
+            <!--Section: Content-->
+
+          </div>
+        </div>
+
+
+

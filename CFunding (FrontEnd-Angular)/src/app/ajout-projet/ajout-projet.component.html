@@ -1,0 +1,126 @@
+<div class="highpro">
+   <div class="flex-fill"><span class="headpro">Lancer Vous!</span></div>
+  <div class="flex-fill"><div class="d-inline-flex p-2 col-example"><span class="coco">Vous avez un projet ? Nous vous accompagnons. Répondez simplement aux questions ci-dessous, vous pourrez tout éditer par la suite.</span></div></div>
+</div>
+
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" class="example-form">
+      <ng-template matStepLabel>description du projet</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="titre de projet" formControlName="titre"   required>
+      </mat-form-field>
+      <br>
+      <mat-form-field  class="example-full-width" >
+        <mat-label>type du projet </mat-label>
+        <mat-select formControlName="type"  >
+          <mat-option value="dont" >dont</mat-option>
+          <mat-option value="reward-based" >reward-based crowdfunding</mat-option>
+          <mat-option value="equity" >L'equity crowdfunding</mat-option>
+          <mat-option value="prêt" >Le prêt</mat-option>
+        </mat-select >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Categorie du projet" aria-label="Number" matInput  [matAutocomplete]="auto" formControlName="categorie"  required>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Description" formControlName="description"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="5"
+                      cdkAutosizeMaxRows="5" ></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>montant et duree</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Montant"  type="number" formControlName="montant" required>
+        <span matPrefix>DH&nbsp;</span>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Durée (60 jours maximum)" type="number" formControlName="duree" required>
+        <span matSuffix>Jours</span>
+      </mat-form-field>
+
+      <br>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" accept="image/*" (change)="onSelectFile($event)"
+                 aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="inputGroupFile01" style="width: 30%">{{userfile.name}}</label>
+        </div>
+      </div>
+      <br>
+      <div class="speciale">
+
+        <img [src]="srcimg"class="img-fluid" alt="Upload your Image" style="width: 100%;height: 100%">
+
+
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step >
+  <mat-step [stepControl]="thirdFormGroup">
+    <ng-template matStepLabel>Contreparties</ng-template>
+    <div class="card w-50">
+      <div class="card-header text-center">
+        <span  style="font-weight: bold"> pour {{thirdFormGroup.value.montant}} DH&nbsp;</span>
+
+      </div>
+      <div class="card-body ">
+        <form class="example-form" [formGroup]="thirdFormGroup">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="le titre" formControlName="titre" >
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Description" formControlName="description"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="5"
+                      cdkAutosizeMaxRows="5" ></textarea>
+
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Montant"  type="number" formControlName="montant" required>
+            <span matPrefix>DH&nbsp;</span>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="Livraison" formControlName="livraison">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button [disabled]="!firstFormGroup.valid && !secondFormGroup.valid && !thirdFormGroup.valid"  (click)="commit()">Confirmer</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

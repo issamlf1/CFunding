@@ -1,0 +1,51 @@
+<div class="a" *ngFor="let item of listProjets; let i = index">
+    <p>{{ i }}</p>
+  
+    
+        <div>
+          <!--Card-->
+          <mdb-card cascade="true">
+      
+            <!--Card image-->
+            <div id="yourElement" class="view view-cascade overlay waves-light" mdbWavesEffect>
+              <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/men.jpg"></mdb-card-img>
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--/Card image-->
+      
+            <mdb-card-body cascade="true" class="text-center pb-0 px-0">
+              <!--Card content-->
+              <h4 class="card-title">
+                <strong>{{ item.titre}}</strong>
+              </h4>
+              <h5>{{ item.categorie}}</h5>
+      
+              <mdb-card-text>
+                {{ item.description }}
+              </mdb-card-text>
+      
+              <!--Facebook-->
+             
+              <!--Twitter-->
+              <a type="button" mdbBtn floating="true" size="sm" color="tw" class="waves-light"(click)="update(item.titre)"  mdbWavesEffect>
+                <i class="fas fa-edit"></i>
+                Modifier
+              </a>
+              <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" (click)="delete(item)" mdbWavesEffect>
+                <i class="fas fa-trash-alt"></i>
+                Supprimer
+              </a>
+              <!-- Card footer -->
+              <div class="card-footer text-muted text-center mt-4">
+                {{ item.duree }}
+              </div>
+      
+            </mdb-card-body>
+            <!--/.Card content-->
+      
+          </mdb-card>
+          <!--/.Card-->
+        </div>
+        </div>

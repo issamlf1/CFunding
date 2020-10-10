@@ -1,0 +1,116 @@
+        <div class="container-fluid my-5 midlles" >
+            <div class="container">
+              <!--Section: Content-->
+              <section class="">
+
+                <!-- Section heading -->
+
+                <div class="row" >
+
+                  <div class="col-md-3 mb-3"  *ngFor="let proj of listDonnation ;let i=index">
+                    <!--Card-->
+                    <div class="card">
+
+                      <!--Card image-->
+                      <div class="view overlay">
+                        <img *ngIf="proj.projet.srcimage" [src]="proj?.projet?.srcimage" class="card-img-top" alt="">
+                        <a>
+                          <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                        </a>
+                      </div>
+                      <!--/.Card image-->
+
+                      <!--Card content-->
+                      <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title"><strong>{{proj?.projet?.titre}}</strong></h4>
+                        <hr>
+                        <!--Text-->
+                        <p class="card-text mb-3">{{proj?.projet?.description}}
+                        </p>
+                        <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+                         Un don de  {{proj?.montant}} Dh</p>
+                         <p class="font-small font-weight-bold dark-grey-text mb-1"><i class="far fa-clock-o"></i>
+                            dont effectee le {{proj?.dateDonn | date}}</p>
+                        <p class="font-small grey-text mb-0">{{proj?.projet?.categorie}}</p>
+                        <a (click)="signalerProb(proj.projet.titre,true)" (click)="basicModal.show()" mdbWavesEffect type="button" mdbBtn floating="true" size="sm" color="tw" class="waves-light" mdbWavesEffect>
+                          <i class="fas fa-edit"></i>
+                          Signaler un probleme
+                        </a>
+
+                      </div>
+                      <!--/.Card content-->
+
+                    </div>
+                    <!--/.Card-->
+
+                  </div>
+
+
+
+
+
+                </div>
+
+
+
+              </section>
+              <!--Section: Content-->
+
+            </div>
+          </div>
+
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Material form subscription -->
+      <div class="card">
+
+          <h5 class="card-header info-color white-text text-center py-4">
+              <strong>Signaler le Probleme</strong>
+          </h5>
+
+
+
+          <!--Card content-->
+          <div class="card-body px-lg-5">
+
+              <!-- Form -->
+              <form  class="text-center" style="color: #757575;">
+
+                  <p>Votre comantaire fait avancez notre site.</p>
+
+
+                  <!-- E-mai -->
+                  <div class="md-form">
+
+                      <input name="problemText" type="email" id="materialSubscriptionFormEmail" class="form-control" [(ngModel)]="problemText" >
+
+                  </div>
+
+                  <!-- Sign in button -->
+                  <div>
+                  <button type="button" mdbBtn color="secondary"
+                   class="relative waves-light"
+                   aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Fermer</button>
+        <button type="button" mdbBtn color="primary"  (click)="basicModal.hide()"  class="relative waves-light" (click)="signalerProb('ss',false)" mdbWavesEffect>Enregister
+
+        </button>
+      </div>
+
+              </form>
+              <!-- Form -->
+
+          </div>
+
+      </div>
+      <!-- Material form subscription -->
+
+
+    </div>
+  </div>
+</div>
+
+
+
